@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import LoggerFactory
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {

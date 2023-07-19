@@ -8,6 +8,7 @@
 
 import Foundation
 import PostgresClientKit
+import LoggerFactory
 
 
 // For testability. Not intended to become public as long as FetchableRecord has

@@ -19,7 +19,6 @@
 		8E7A8D2E2A675EFE00C086B9 /* DatabaseDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D2D2A675EFE00C086B9 /* DatabaseDefinition.swift */; };
 		8E7A8D302A675F2200C086B9 /* DatabaseColumnMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D2F2A675F2200C086B9 /* DatabaseColumnMapping.swift */; };
 		8E7A8D322A675F6200C086B9 /* PostgresDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D312A675F6200C086B9 /* PostgresDB.swift */; };
-		8E7A8D352A675F9F00C086B9 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D342A675F9F00C086B9 /* ConsoleLogger.swift */; };
 		8E7A8D382A6772D500C086B9 /* PostgresRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D372A6772D500C086B9 /* PostgresRecord.swift */; };
 		8E7A8D3A2A6772F500C086B9 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D392A6772F500C086B9 /* Error.swift */; };
 		8E7A8D3F2A67733200C086B9 /* PostgresSchemaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D3E2A67733200C086B9 /* PostgresSchemaInfo.swift */; };
@@ -37,10 +36,7 @@
 		8E7A8D5A2A677AD900C086B9 /* FooDaoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D592A677AD900C086B9 /* FooDaoInterface.swift */; };
 		8E7A8D5C2A677B4400C086B9 /* FooDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D5B2A677B4400C086B9 /* FooDao.swift */; };
 		8E7A8D5E2A677BAC00C086B9 /* FooDaoPostgresCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D5D2A677BAC00C086B9 /* FooDaoPostgresCK.swift */; };
-		8E894CD42A67D0B10077B874 /* LoggingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E894CD32A67D0B10077B874 /* LoggingExtensions.swift */; };
-		8E894CD62A67D0F40077B874 /* LogMessageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E894CD52A67D0F40077B874 /* LogMessageBuilder.swift */; };
-		8E894CD82A67D11C0077B874 /* LoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E894CD72A67D11C0077B874 /* LoggerFactory.swift */; };
-		8E894CDA2A67D1770077B874 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E894CD92A67D1770077B874 /* FileLogger.swift */; };
+		8E7A8D632A6813A200C086B9 /* LoggerFactory in Frameworks */ = {isa = PBXBuildFile; productRef = 8E7A8D622A6813A200C086B9 /* LoggerFactory */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +72,6 @@
 		8E7A8D2D2A675EFE00C086B9 /* DatabaseDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDefinition.swift; sourceTree = "<group>"; };
 		8E7A8D2F2A675F2200C086B9 /* DatabaseColumnMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseColumnMapping.swift; sourceTree = "<group>"; };
 		8E7A8D312A675F6200C086B9 /* PostgresDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostgresDB.swift; sourceTree = "<group>"; };
-		8E7A8D342A675F9F00C086B9 /* ConsoleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
 		8E7A8D372A6772D500C086B9 /* PostgresRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostgresRecord.swift; sourceTree = "<group>"; };
 		8E7A8D392A6772F500C086B9 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		8E7A8D3E2A67733200C086B9 /* PostgresSchemaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostgresSchemaInfo.swift; sourceTree = "<group>"; };
@@ -94,10 +89,6 @@
 		8E7A8D592A677AD900C086B9 /* FooDaoInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooDaoInterface.swift; sourceTree = "<group>"; };
 		8E7A8D5B2A677B4400C086B9 /* FooDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooDao.swift; sourceTree = "<group>"; };
 		8E7A8D5D2A677BAC00C086B9 /* FooDaoPostgresCK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooDaoPostgresCK.swift; sourceTree = "<group>"; };
-		8E894CD32A67D0B10077B874 /* LoggingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingExtensions.swift; sourceTree = "<group>"; };
-		8E894CD52A67D0F40077B874 /* LogMessageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMessageBuilder.swift; sourceTree = "<group>"; };
-		8E894CD72A67D11C0077B874 /* LoggerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerFactory.swift; sourceTree = "<group>"; };
-		8E894CD92A67D1770077B874 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E7A8D252A675E1100C086B9 /* PostgresClientKit in Frameworks */,
+				8E7A8D632A6813A200C086B9 /* LoggerFactory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +141,6 @@
 		8E7A8CF52A6756A900C086B9 /* PostgresModelApp */ = {
 			isa = PBXGroup;
 			children = (
-				8E7A8D362A675FCA00C086B9 /* Commons */,
-				8E7A8D332A675F8600C086B9 /* Logging */,
 				8E7A8D262A675E5000C086B9 /* Data */,
 				8E7A8CF62A6756A900C086B9 /* AppDelegate.swift */,
 				8E7A8CF82A6756A900C086B9 /* ViewController.swift */,
@@ -232,25 +222,6 @@
 			path = VersionControl;
 			sourceTree = "<group>";
 		};
-		8E7A8D332A675F8600C086B9 /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-				8E7A8D342A675F9F00C086B9 /* ConsoleLogger.swift */,
-				8E894CD32A67D0B10077B874 /* LoggingExtensions.swift */,
-				8E894CD52A67D0F40077B874 /* LogMessageBuilder.swift */,
-				8E894CD72A67D11C0077B874 /* LoggerFactory.swift */,
-				8E894CD92A67D1770077B874 /* FileLogger.swift */,
-			);
-			path = Logging;
-			sourceTree = "<group>";
-		};
-		8E7A8D362A675FCA00C086B9 /* Commons */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Commons;
-			sourceTree = "<group>";
-		};
 		8E7A8D3B2A67731200C086B9 /* CommonEntity */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +294,7 @@
 			name = PostgresModelApp;
 			packageProductDependencies = (
 				8E7A8D242A675E1100C086B9 /* PostgresClientKit */,
+				8E7A8D622A6813A200C086B9 /* LoggerFactory */,
 			);
 			productName = PostgresModelApp;
 			productReference = 8E7A8CF32A6756A900C086B9 /* PostgresModelApp.app */;
@@ -398,6 +370,7 @@
 			mainGroup = 8E7A8CEA2A6756A900C086B9;
 			packageReferences = (
 				8E7A8D232A675E1100C086B9 /* XCRemoteSwiftPackageReference "PostgresClientKit" */,
+				8E7A8D612A6813A200C086B9 /* XCRemoteSwiftPackageReference "LoggerFactory" */,
 			);
 			productRefGroup = 8E7A8CF42A6756A900C086B9 /* Products */;
 			projectDirPath = "";
@@ -442,7 +415,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E7A8D462A67739100C086B9 /* PostgresSchemaGenerator.swift in Sources */,
-				8E7A8D352A675F9F00C086B9 /* ConsoleLogger.swift in Sources */,
 				8E7A8D3F2A67733200C086B9 /* PostgresSchemaInfo.swift in Sources */,
 				8E7A8D4E2A6773F100C086B9 /* PostgresDBRowValueConversion.swift in Sources */,
 				8E7A8CF92A6756A900C086B9 /* ViewController.swift in Sources */,
@@ -453,7 +425,6 @@
 				8E7A8D322A675F6200C086B9 /* PostgresDB.swift in Sources */,
 				8E7A8D502A67740600C086B9 /* PostgresRowDecoder.swift in Sources */,
 				8E7A8D2E2A675EFE00C086B9 /* DatabaseDefinition.swift in Sources */,
-				8E894CD82A67D11C0077B874 /* LoggerFactory.swift in Sources */,
 				8E7A8D442A67737600C086B9 /* PostgresDBValueContainer.swift in Sources */,
 				8E7A8D382A6772D500C086B9 /* PostgresRecord.swift in Sources */,
 				8E7A8D5C2A677B4400C086B9 /* FooDao.swift in Sources */,
@@ -462,13 +433,10 @@
 				8E7A8D4C2A6773DC00C086B9 /* PostgresRow.swift in Sources */,
 				8E7A8D552A6774BB00C086B9 /* Extensions.swift in Sources */,
 				8E7A8D422A67736000C086B9 /* EncodableDBRecord.swift in Sources */,
-				8E894CD42A67D0B10077B874 /* LoggingExtensions.swift in Sources */,
 				8E7A8D3A2A6772F500C086B9 /* Error.swift in Sources */,
 				8E7A8D5A2A677AD900C086B9 /* FooDaoInterface.swift in Sources */,
 				8E7A8D4A2A6773BD00C086B9 /* CRUDStatement.swift in Sources */,
-				8E894CD62A67D0F40077B874 /* LogMessageBuilder.swift in Sources */,
 				8E7A8CF72A6756A900C086B9 /* AppDelegate.swift in Sources */,
-				8E894CDA2A67D1770077B874 /* FileLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,6 +773,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		8E7A8D612A6813A200C086B9 /* XCRemoteSwiftPackageReference "LoggerFactory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kelvinjjwong/LoggerFactory.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -812,6 +788,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8E7A8D232A675E1100C086B9 /* XCRemoteSwiftPackageReference "PostgresClientKit" */;
 			productName = PostgresClientKit;
+		};
+		8E7A8D622A6813A200C086B9 /* LoggerFactory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E7A8D612A6813A200C086B9 /* XCRemoteSwiftPackageReference "LoggerFactory" */;
+			productName = LoggerFactory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

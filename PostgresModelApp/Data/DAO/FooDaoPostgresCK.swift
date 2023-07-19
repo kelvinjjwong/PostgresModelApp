@@ -7,6 +7,7 @@
 
 import Foundation
 import PostgresClientKit
+import LoggerFactory
 
 class FooDaoPostgresCK : FooDaoInterface {
     

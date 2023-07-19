@@ -8,6 +8,7 @@
 
 import Foundation
 import PostgresClientKit
+import LoggerFactory
 
 public class PostgresDB : DBExecutor {
     
