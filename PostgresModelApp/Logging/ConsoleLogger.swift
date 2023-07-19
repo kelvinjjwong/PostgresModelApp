@@ -38,30 +38,215 @@ enum LogType: String{
     case performance
 }
 
-protocol Logger {
-    func timecost(_ message:String, fromDate:Date)
-    func log(_ message:String)
-    func log(_ logType:LogType, _ message:String)
-    func log(_ message:Int)
-    func log(_ logType:LogType, _ message:Int)
-    func log(_ message:Double)
-    func log(_ logType:LogType, _ message:Double)
-    func log(_ message:Float)
-    func log(_ logType:LogType, _ message:Float)
-    func log(_ message:Any)
-    func log(_ logType:LogType, _ message:Any)
-    func log(_ message:Error)
-    func log(_ logType:LogType, _ message:Error)
-    func log(_ message:String, _ error:Error)
-    func log(_ logType:LogType, _ message:String, _ error:Error)
+protocol LogWriter {
+    func write(message: String)
 }
 
-class FileLogger {
+protocol LogMessageBuilderInterface {
+    func build(logType:LogType, message:String, error:Error?) -> String
+    func build(logType:LogType, message:Int, error:Error?) -> String
+    func build(logType:LogType, message:Double, error:Error?) -> String
+    func build(logType:LogType, message:Float, error:Error?) -> String
+    func build(logType:LogType, message:Any, error:Error?) -> String
+    func build(logType:LogType, error:Error) -> String
+}
+
+class LogMessageBuilder : LogMessageBuilderInterface {
+    
+    private let dtFormatter = ISO8601DateFormatter()
+    
+    private var category:String = ""
+    private var subCategory:String = ""
+    
+    init(category:String, subCategory:String) {
+        self.category = category
+        self.subCategory = subCategory
+    }
+    
+    fileprivate func prefix(category:String, subCategory:String) -> String {
+        if subCategory == "" {
+            return "\(self.dtFormatter.string(from: Date())) [\(category)]"
+        }else{
+            return "\(self.dtFormatter.string(from: Date())) [\(category)][\(subCategory)]"
+        }
+    }
+    
+    func build(logType:LogType, message:String, error:Error?) -> String {
+        if let error = error {
+            return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(message) - \(error)"
+        }else{
+            return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(message)"
+        }
+    }
+    
+    func build(logType:LogType, message:Int, error:Error?) -> String {
+        if let error = error {
+            return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(message) - \(error)"
+        }else{
+            return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(message)"
+        }
+    }
+    
+    func build(logType:LogType, message:Double, error:Error?) -> String {
+        if let error = error {
+            return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(message) - \(error)"
+        }else{
+            return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(message)"
+        }
+    }
+    
+    func build(logType:LogType, message:Float, error:Error?) -> String {
+        if let error = error {
+            return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(message) - \(error)"
+        }else{
+            return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(message)"
+        }
+    }
+    
+    func build(logType:LogType, message:Any, error:Error?) -> String {
+        if let error = error {
+            return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(message) - \(error)"
+        }else{
+            return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(message)"
+        }
+    }
+    
+    func build(logType:LogType, error:Error) -> String {
+        return "\(LogType.iconOfType(LogType.info)) \(self.prefix(category: category, subCategory: subCategory)) \(error)"
+    }
+}
+
+class LogDispatcher {
+    
+    fileprivate var logMessageBuilder:LogMessageBuilder
+    fileprivate var loggers:[LogWriter]
+    
+    init(category:String, subCategory:String, loggers: [LogWriter]) {
+        self.logMessageBuilder = LogMessageBuilder(category: category, subCategory: subCategory)
+        self.loggers = loggers
+    }
+    
+    func timecost(_ message:String, fromDate:Date) {
+        let msg = self.logMessageBuilder.build(logType: .performance, message: "\(message) - time cost: \(Date().timeIntervalSince(fromDate)) seconds", error: nil)
+        for logger in loggers {
+            logger.write(message: msg)
+        }
+    }
+    
+    func log(_ message:String) {
+        let msg = self.logMessageBuilder.build(logType: .info, message: message, error: nil)
+        for logger in loggers {
+            logger.write(message: msg)
+        }
+    }
+    
+    func log(_ logType:LogType, _ message:String) {
+        let msg = self.logMessageBuilder.build(logType: logType, message: message, error: nil)
+        for logger in loggers {
+            logger.write(message: msg)
+        }
+    }
+    
+    func log(_ message:Int) {
+        let msg = self.logMessageBuilder.build(logType: .info, message: message, error: nil)
+        for logger in loggers {
+            logger.write(message: msg)
+        }
+    }
+    
+    func log(_ logType:LogType, _ message:Int) {
+        for logger in loggers {
+            logger.log(logType, message)
+        }
+    }
+    
+    func log(_ message:Double) {
+        let msg = self.logMessageBuilder.build(logType: .info, message: message, error: nil)
+        for logger in loggers {
+            logger.write(message: msg)
+        }
+    }
+    
+    func log(_ logType:LogType, _ message:Double) {
+        for logger in loggers {
+            logger.log(logType, message)
+        }
+    }
+    
+    func log(_ message:Float) {
+        let msg = self.logMessageBuilder.build(logType: .info, message: message, error: nil)
+        for logger in loggers {
+            logger.write(message: msg)
+        }
+    }
+    func log(_ logType:LogType, _ message:Float) {
+        for logger in loggers {
+            logger.log(logType, message)
+        }
+    }
+    
+    func log(_ message:Any) {
+        let msg = self.logMessageBuilder.build(logType: .info, message: message, error: nil)
+        for logger in loggers {
+            logger.write(message: msg)
+        }
+    }
+    
+    func log(_ logType:LogType, _ message:Any) {
+        for logger in loggers {
+            logger.log(logType, message)
+        }
+    }
+    
+    func log(_ message:Error) {
+        let msg = self.logMessageBuilder.build(logType: .info, message: message, error: message)
+        for logger in loggers {
+            logger.write(message: msg)
+        }
+    }
+    
+    func log(_ logType:LogType, _ message:Error) {
+        for logger in loggers {
+            logger.log(logType, message)
+        }
+    }
+    
+    func log(_ message:String, _ error:Error) {
+        let msg = self.logMessageBuilder.build(logType: .info, message: message, error: error)
+        for logger in loggers {
+            logger.write(message: msg)
+        }
+    }
+    
+    func log(_ logType:LogType, _ message:String, _ error:Error) {
+        for logger in loggers {
+            logger.log(logType, message, error)
+        }
+    }
+}
+
+class LoggerFactory {
+    
+    fileprivate static var loggers:[Logger] = []
+    
+    static func append(logger:Logger) {
+        Self.loggers.append(logger)
+    }
+    
+    static func get(category:String, subCategory:String) -> LogDispatcher {
+        return LogDispatcher(category: category, subCategory: subCategory, loggers: loggers)
+    }
+    
+}
+
+class FileLogger : Logger {
     
     fileprivate var logFileUrl:URL
     
     init(pathOfFolder: String) {
         self.logFileUrl = URL(fileURLWithPath: pathOfFolder)
+        print("Writing log to file: \(logFileUrl.path)")
+        self.write("Writing log to file: \(logFileUrl.path)")
     }
     
     convenience init() {
@@ -101,6 +286,66 @@ class FileLogger {
                 print(msg)
             }
         }
+    }
+    
+    func timecost(_ message:String, fromDate:Date) {
+        self.write(message)
+    }
+    
+    func log(_ message:String) {
+        self.write(message)
+    }
+    
+    func log(_ logType:LogType, _ message:String) {
+        self.write(message)
+    }
+    
+    func log(_ message:Int) {
+        self.write(message)
+    }
+    
+    func log(_ logType:LogType, _ message:Int) {
+        self.write(message)
+    }
+    
+    func log(_ message:Double) {
+        self.write(message)
+    }
+    
+    func log(_ logType:LogType, _ message:Double) {
+        self.write(message)
+    }
+    
+    func log(_ message:Float) {
+        self.write(message)
+    }
+    
+    func log(_ logType:LogType, _ message:Float) {
+        self.write(message)
+    }
+    
+    func log(_ message:Any) {
+        self.write(message)
+    }
+    
+    func log(_ logType:LogType, _ message:Any) {
+        self.write(message)
+    }
+    
+    func log(_ message:Error) {
+        self.write(message)
+    }
+    
+    func log(_ logType:LogType, _ message:Error) {
+        self.write(message)
+    }
+    
+    func log(_ message:String, _ error:Error) {
+        self.write(message)
+    }
+    
+    func log(_ logType:LogType, _ message:String, _ error:Error) {
+        self.write(message)
     }
 }
 
