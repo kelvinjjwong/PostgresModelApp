@@ -6,3 +6,26 @@
 //
 
 import Foundation
+
+public final class FooDao {
+    
+    let logger = ConsoleLogger(category: "FooDao")
+    
+    private let impl:FooDaoInterface
+    
+    init(_ impl:FooDaoInterface) {
+        self.impl = impl
+    }
+    
+    static var `default`:FooDao {
+        return FooDao(FooDaoPostgresCK())
+    }
+    
+    func getFoo(id:Int) -> Foo? {
+        return self.impl.getFoo(id: id)
+    }
+    
+    func getFoos() -> [Foo] {
+        return self.impl.getFoos()
+    }
+}

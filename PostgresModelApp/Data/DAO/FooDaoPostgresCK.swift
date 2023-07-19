@@ -6,3 +6,23 @@
 //
 
 import Foundation
+import PostgresClientKit
+
+class FooDaoPostgresCK : FooDaoInterface {
+    
+    let logger = ConsoleLogger(category: "FooDaoPostgresCK")
+    
+    func getFoo(id: Int) -> Foo? {
+        if let db = PostgresDB.connect() {
+            return Foo.fetchOne(db, parameters: ["id" : id])
+        }
+        return nil
+    }
+    
+    func getFoos() -> [Foo] {
+        if let db = PostgresDB.connect() {
+            return Foo.fetchAll(db)
+        }
+        return []
+    }
+}

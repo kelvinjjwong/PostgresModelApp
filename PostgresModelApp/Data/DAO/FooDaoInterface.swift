@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+
+protocol FooDaoInterface {
+    
+    func getFoo(id:Int) -> Foo?
+    
+    func getFoos() -> [Foo]
+}
