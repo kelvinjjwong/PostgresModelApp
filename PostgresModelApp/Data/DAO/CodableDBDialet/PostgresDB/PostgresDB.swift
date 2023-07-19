@@ -155,7 +155,7 @@ public class PostgresDB : DBExecutor {
             let connection = try PostgresClientKit.Connection(configuration: self.postgresConfig)
             defer { connection.close() }
             
-            let generator = PostgreSQLStatementGenerator(table: table, record: object)
+            let _ = PostgreSQLStatementGenerator(table: table, record: object)
 //            let columnNames = generator.persistenceContainer.columns
             
             var pagination = ""

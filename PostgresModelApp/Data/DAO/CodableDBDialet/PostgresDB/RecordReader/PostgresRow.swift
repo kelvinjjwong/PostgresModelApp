@@ -95,7 +95,7 @@ class PostgresRow : CustomStringConvertible {
     
     public subscript<Value:PostgresRowValueConvertible>(_ columnName: String) -> Value {
         guard let index = index(ofColumn: columnName) else {
-            fatalError("[PostgresRow][columnName] Value.decode: Unable to convert value of column [\(columnName)] index:\(index)")
+            fatalError("[PostgresRow][columnName] Value.decode: Unable to convert value of column [\(columnName)] index:\(String(describing: index))")
         }
         //self.logger.log("debug 11")
         return Value.decode(from: self, atUncheckedIndex: index)

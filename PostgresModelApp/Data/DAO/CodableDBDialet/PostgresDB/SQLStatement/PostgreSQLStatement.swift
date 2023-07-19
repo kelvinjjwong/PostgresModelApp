@@ -92,7 +92,7 @@ public final class PostgreSQLStatementGenerator<Record: EncodableDBRecord> {
         }
         
         // separate key-column(s) from columns in UPDATE-SET-clause
-        let updateColumns = columns
+//        let updateColumns = columns
         var needRemoveIndics:[Int] = []
         for col in keyColumns {
             if let i = columns.firstIndex(of: col) {
@@ -106,10 +106,10 @@ public final class PostgreSQLStatementGenerator<Record: EncodableDBRecord> {
         // generate statement
         let query = UpdateQuery(
             tableName: databaseTableName,
-            columns: updateColumns,
+            columns: columns,
             conditionColumns: keyColumns)
         let statement = SQLStatement(sql: query.sql)
-        statement.arguments = persistenceContainer.valuesOf(columns: updateColumns) + persistenceContainer.valuesOf(columns: keyColumns)
+        statement.arguments = persistenceContainer.valuesOf(columns: columns) + persistenceContainer.valuesOf(columns: keyColumns)
         return statement
     }
     
