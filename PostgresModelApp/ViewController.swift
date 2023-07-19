@@ -9,7 +9,7 @@ import Cocoa
 
 class ViewController: NSViewController {
     
-    let logger = ConsoleLogger(category: "ViewController")
+    let logger = LoggerFactory.get(category: "ViewController")
     
     @IBOutlet weak var txtHostname: NSTextField!
     @IBOutlet weak var txtUsername: NSTextField!

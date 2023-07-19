@@ -33,7 +33,7 @@ class PostgresRowDecoder {
 /// The decoder that decodes a record from a database row
 private struct _RowDecoder<R: Decodable>: Decoder {
     
-    let logger = ConsoleLogger(category: "_RowDecoder")
+    let logger = LoggerFactory.get(category: "_RowDecoder")
     var row: PostgresRow
     var codingPath: [CodingKey]
     var userInfo: [CodingUserInfoKey: Any] { return [:] }
@@ -75,7 +75,7 @@ private struct _RowDecoder<R: Decodable>: Decoder {
     }
     
     class KeyedContainer<Key: CodingKey>: KeyedDecodingContainerProtocol {
-        let logger = ConsoleLogger(category: "KeyedContainer")
+        let logger = LoggerFactory.get(category: "KeyedContainer")
         
         let decoder: _RowDecoder
         var codingPath: [CodingKey] { return decoder.codingPath }

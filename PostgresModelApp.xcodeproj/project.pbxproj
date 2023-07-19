@@ -37,6 +37,10 @@
 		8E7A8D5A2A677AD900C086B9 /* FooDaoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D592A677AD900C086B9 /* FooDaoInterface.swift */; };
 		8E7A8D5C2A677B4400C086B9 /* FooDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D5B2A677B4400C086B9 /* FooDao.swift */; };
 		8E7A8D5E2A677BAC00C086B9 /* FooDaoPostgresCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8D5D2A677BAC00C086B9 /* FooDaoPostgresCK.swift */; };
+		8E894CD42A67D0B10077B874 /* LoggingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E894CD32A67D0B10077B874 /* LoggingExtensions.swift */; };
+		8E894CD62A67D0F40077B874 /* LogMessageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E894CD52A67D0F40077B874 /* LogMessageBuilder.swift */; };
+		8E894CD82A67D11C0077B874 /* LoggerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E894CD72A67D11C0077B874 /* LoggerFactory.swift */; };
+		8E894CDA2A67D1770077B874 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E894CD92A67D1770077B874 /* FileLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +94,10 @@
 		8E7A8D592A677AD900C086B9 /* FooDaoInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooDaoInterface.swift; sourceTree = "<group>"; };
 		8E7A8D5B2A677B4400C086B9 /* FooDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooDao.swift; sourceTree = "<group>"; };
 		8E7A8D5D2A677BAC00C086B9 /* FooDaoPostgresCK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooDaoPostgresCK.swift; sourceTree = "<group>"; };
+		8E894CD32A67D0B10077B874 /* LoggingExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingExtensions.swift; sourceTree = "<group>"; };
+		8E894CD52A67D0F40077B874 /* LogMessageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMessageBuilder.swift; sourceTree = "<group>"; };
+		8E894CD72A67D11C0077B874 /* LoggerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerFactory.swift; sourceTree = "<group>"; };
+		8E894CD92A67D1770077B874 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +236,10 @@
 			isa = PBXGroup;
 			children = (
 				8E7A8D342A675F9F00C086B9 /* ConsoleLogger.swift */,
+				8E894CD32A67D0B10077B874 /* LoggingExtensions.swift */,
+				8E894CD52A67D0F40077B874 /* LogMessageBuilder.swift */,
+				8E894CD72A67D11C0077B874 /* LoggerFactory.swift */,
+				8E894CD92A67D1770077B874 /* FileLogger.swift */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
@@ -441,6 +453,7 @@
 				8E7A8D322A675F6200C086B9 /* PostgresDB.swift in Sources */,
 				8E7A8D502A67740600C086B9 /* PostgresRowDecoder.swift in Sources */,
 				8E7A8D2E2A675EFE00C086B9 /* DatabaseDefinition.swift in Sources */,
+				8E894CD82A67D11C0077B874 /* LoggerFactory.swift in Sources */,
 				8E7A8D442A67737600C086B9 /* PostgresDBValueContainer.swift in Sources */,
 				8E7A8D382A6772D500C086B9 /* PostgresRecord.swift in Sources */,
 				8E7A8D5C2A677B4400C086B9 /* FooDao.swift in Sources */,
@@ -449,10 +462,13 @@
 				8E7A8D4C2A6773DC00C086B9 /* PostgresRow.swift in Sources */,
 				8E7A8D552A6774BB00C086B9 /* Extensions.swift in Sources */,
 				8E7A8D422A67736000C086B9 /* EncodableDBRecord.swift in Sources */,
+				8E894CD42A67D0B10077B874 /* LoggingExtensions.swift in Sources */,
 				8E7A8D3A2A6772F500C086B9 /* Error.swift in Sources */,
 				8E7A8D5A2A677AD900C086B9 /* FooDaoInterface.swift in Sources */,
 				8E7A8D4A2A6773BD00C086B9 /* CRUDStatement.swift in Sources */,
+				8E894CD62A67D0F40077B874 /* LogMessageBuilder.swift in Sources */,
 				8E7A8CF72A6756A900C086B9 /* AppDelegate.swift in Sources */,
+				8E894CDA2A67D1770077B874 /* FileLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

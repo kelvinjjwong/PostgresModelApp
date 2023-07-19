@@ -10,7 +10,7 @@ import PostgresClientKit
 
 class FooDaoPostgresCK : FooDaoInterface {
     
-    let logger = ConsoleLogger(category: "FooDaoPostgresCK")
+    let logger = LoggerFactory.get(category: "FooDaoPostgresCK")
     
     func getFoo(id: Int) -> Foo? {
         if let db = PostgresDB.connect() {

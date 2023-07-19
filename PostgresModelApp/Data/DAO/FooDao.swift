@@ -9,7 +9,7 @@ import Foundation
 
 public final class FooDao {
     
-    let logger = ConsoleLogger(category: "FooDao")
+    let logger = LoggerFactory.get(category: "FooDao")
     
     private let impl:FooDaoInterface
     
