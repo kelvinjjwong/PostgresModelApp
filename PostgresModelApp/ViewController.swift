@@ -42,6 +42,23 @@ class ViewController: NSViewController {
         for record in records {
             self.logger.log("[record]: \(record.id) \(record.name) \(record.age)")
         }
+        let dtFormatter = ISO8601DateFormatter()
+        let newName = "NewPerson_\(dtFormatter.string(from: Date()))"
+        let randomAge = Int.random(in: 2..<100)
+        FooDao.default.insertFoo(name: newName, age: randomAge)
+        
+        let foos = FooDao.default.queryFoo(name: "Tom")
+        if !foos.isEmpty {
+            FooDao.default.updateFoo(id: foos[0].id, name: "Tommy", age: nil)
+        }
+        
+        print("==============")
+        
+        let rs = FooDao.default.getFoos()
+        
+        for r in rs {
+            self.logger.log("[record]: \(r.id) \(r.name) \(r.age)")
+        }
     }
     
 }

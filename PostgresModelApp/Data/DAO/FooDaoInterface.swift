@@ -13,4 +13,10 @@ protocol FooDaoInterface {
     func getFoo(id:Int) -> Foo?
     
     func getFoos() -> [Foo]
+    
+    func updateFoo(id:Int, name:String?, age:Int?)
+    
+    func insertFoo(name:String?, age:Int?)
+    
+    func queryFoo(name:String) -> [Foo]
 }

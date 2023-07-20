@@ -29,4 +29,16 @@ public final class FooDao {
     func getFoos() -> [Foo] {
         return self.impl.getFoos()
     }
+    
+    func updateFoo(id:Int, name:String?, age:Int?) {
+        self.impl.updateFoo(id: id, name: name, age: age)
+    }
+    
+    func insertFoo(name:String?, age:Int?) {
+        self.impl.insertFoo(name: name, age: age)
+    }
+    
+    func queryFoo(name:String) -> [Foo] {
+        return self.impl.queryFoo(name: name)
+    }
 }

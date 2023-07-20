@@ -26,4 +26,30 @@ class FooDaoPostgresCK : FooDaoInterface {
         }
         return []
     }
+    
+    func updateFoo(id:Int, name:String?, age:Int?) {
+        if let db = PostgresDB.connect() {
+            if let foo = Foo.fetchOne(db, parameters: ["id": id]) {
+                foo.name = name
+                foo.age = age
+                foo.save(db)
+            }
+        }
+    }
+    
+    func insertFoo(name:String?, age:Int?) {
+        if let db = PostgresDB.connect() {
+            let foo = Foo()
+            foo.name = name
+            foo.age = age
+            foo.save(db)
+        }
+    }
+    
+    func queryFoo(name:String) -> [Foo] {
+        if let db = PostgresDB.connect() {
+            return Foo.fetchAll(db, parameters: ["name": name], orderBy: "age")
+        }
+        return []
+    }
 }
