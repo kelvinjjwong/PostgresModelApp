@@ -19,4 +19,6 @@ protocol FooDaoInterface {
     func insertFoo(name:String?, age:Int?)
     
     func queryFoo(name:String) -> [Foo]
+    
+    func versionCheck()
 }

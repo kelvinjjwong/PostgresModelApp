@@ -9,7 +9,7 @@ import Foundation
 
 public final class Foo : Codable {
     
-    var id:Int = 0
+    var id:Int?
     var age:Int?
     var name:String?
     
@@ -31,7 +31,7 @@ extension Foo : PostgresRecord {
     }
     
     public func autofillColumns() -> [String] {
-        return []
+        return ["id"]
     }
     
     

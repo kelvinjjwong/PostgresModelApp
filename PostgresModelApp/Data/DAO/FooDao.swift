@@ -41,4 +41,8 @@ public final class FooDao {
     func queryFoo(name:String) -> [Foo] {
         return self.impl.queryFoo(name: name)
     }
+    
+    func versionCheck() {
+        return self.impl.versionCheck()
+    }
 }

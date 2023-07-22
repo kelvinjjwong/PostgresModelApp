@@ -12,7 +12,7 @@ import LoggerFactory
 
 public class PostgresDB : DBExecutor {
     
-    let logger = LoggerFactory.get(category: "DB", subCategory: "PostgresDB", includeTypes: [])
+    let logger = LoggerFactory.get(category: "DB", subCategory: "PostgresDB", includeTypes: [.debug])
     
     private let postgresConfig: ConnectionConfiguration
     
@@ -43,7 +43,7 @@ public class PostgresDB : DBExecutor {
     }
     
     public init(database:String, host:String = "127.0.0.1", port:Int = 5432, user:String = "postgres", password:String? = nil, ssl:Bool = false) {
-        self.logger.log("connecting: \(user)@\(host):\(port)/\(database)")
+//        self.logger.log("connecting: \(user)@\(host):\(port)/\(database)")
         var configuration = PostgresClientKit.ConnectionConfiguration()
         configuration.host = host
         configuration.port = port

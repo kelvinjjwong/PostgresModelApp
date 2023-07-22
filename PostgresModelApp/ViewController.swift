@@ -35,25 +35,36 @@ class ViewController: NSViewController {
     }
 
     @IBAction func btnQuery(_ sender: NSButton) {
-        let _ = PostgresDB.connect(database: self.txtDatabase.stringValue, host: self.txtHostname.stringValue, user: self.txtUsername.stringValue)
+        let db = PostgresDB.connect(database: self.txtDatabase.stringValue, host: self.txtHostname.stringValue, user: self.txtUsername.stringValue)
         
+        // VERSION MIGRATE
+        FooDao.default.versionCheck()
+        
+        // QUERY
         let records = FooDao.default.getFoos()
         
         for record in records {
             self.logger.log("[record]: \(record.id) \(record.name) \(record.age)")
         }
         let dtFormatter = ISO8601DateFormatter()
+        
+        // INSERT
         let newName = "NewPerson_\(dtFormatter.string(from: Date()))"
         let randomAge = Int.random(in: 2..<100)
         FooDao.default.insertFoo(name: newName, age: randomAge)
         
+        // QUERY ONE and UPDATE
         let foos = FooDao.default.queryFoo(name: "Tom")
         if !foos.isEmpty {
-            FooDao.default.updateFoo(id: foos[0].id, name: "Tommy", age: nil)
+            let foo = foos[0]
+            if let id = foo.id {
+                FooDao.default.updateFoo(id: id, name: "Tommy", age: nil)
+            }
         }
         
         print("==============")
         
+        // QUERY ALL
         let rs = FooDao.default.getFoos()
         
         for r in rs {

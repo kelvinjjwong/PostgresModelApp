@@ -18,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         LoggerFactory.append(logWriter: ConsoleLogger())
         LoggerFactory.append(logWriter: FileLogger())
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
