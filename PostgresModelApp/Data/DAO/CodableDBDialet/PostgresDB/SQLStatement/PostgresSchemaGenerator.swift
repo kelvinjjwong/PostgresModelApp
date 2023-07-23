@@ -26,9 +26,9 @@ public final class PostgresSchemaSQLGenerator : SchemaSQLGenerator {
             case .boolean:
                 return "BOOL"
             case .date:
-                return "timestamp"
+                return "date"
             case .datetime:
-                return "timestamp"
+                return "timestamp with time zone"
             case .double:
                 return "FLOAT8"
             case .integer:
