@@ -42,7 +42,7 @@ public final class FooDao {
         return self.impl.queryFoo(name: name)
     }
     
-    func versionCheck() {
-        return self.impl.versionCheck()
+    func versionCheck(cleanAll: Bool) {
+        return self.impl.versionCheck(cleanAll: cleanAll)
     }
 }

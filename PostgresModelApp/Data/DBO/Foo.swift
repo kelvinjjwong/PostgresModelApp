@@ -12,6 +12,7 @@ public final class Foo : Codable {
     var id:Int?
     var age:Int?
     var name:String?
+    var lastUpdate:Date?
     
     public init() {
         

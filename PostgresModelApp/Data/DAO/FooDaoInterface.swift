@@ -20,5 +20,5 @@ protocol FooDaoInterface {
     
     func queryFoo(name:String) -> [Foo]
     
-    func versionCheck()
+    func versionCheck(cleanAll: Bool)
 }

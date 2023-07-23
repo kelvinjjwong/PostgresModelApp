@@ -12,7 +12,7 @@ import LoggerFactory
 
 public class PostgresDB : DBExecutor {
     
-    let logger = LoggerFactory.get(category: "DB", subCategory: "PostgresDB", includeTypes: [.debug])
+    let logger = LoggerFactory.get(category: "DB", subCategory: "PostgresDB", includeTypes: [])
     
     private let postgresConfig: ConnectionConfiguration
     
@@ -252,7 +252,7 @@ public class PostgresDB : DBExecutor {
             
             let generator = PostgreSQLStatementGenerator(table: table, record: object)
             let columnNames = generator.persistenceContainer.columns
-            let joinedColumnNames = columnNames.joined(separator: ",")
+            let joinedColumnNames = columnNames.joinedQuoted(separator: ",")
             let statement = generator.selectStatement(columns: joinedColumnNames, keyColumns: keyColumns, orderBy: orderBy)
             
             _sql = statement.sql

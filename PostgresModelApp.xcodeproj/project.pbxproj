@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2BE83D2A6D2F6800AECC78 /* DatabaseTriggerDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BE83C2A6D2F6800AECC78 /* DatabaseTriggerDefinition.swift */; };
 		8E7A8CF72A6756A900C086B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8CF62A6756A900C086B9 /* AppDelegate.swift */; };
 		8E7A8CF92A6756A900C086B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A8CF82A6756A900C086B9 /* ViewController.swift */; };
 		8E7A8CFB2A6756AA00C086B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E7A8CFA2A6756AA00C086B9 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E2BE83C2A6D2F6800AECC78 /* DatabaseTriggerDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTriggerDefinition.swift; sourceTree = "<group>"; };
 		8E7A8CF32A6756A900C086B9 /* PostgresModelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostgresModelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7A8CF62A6756A900C086B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E7A8CF82A6756A900C086B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				8E7A8D2B2A675ECF00C086B9 /* SchemaVersionMigration.swift */,
 				8E7A8D2D2A675EFE00C086B9 /* DatabaseDefinition.swift */,
 				8E7A8D2F2A675F2200C086B9 /* DatabaseColumnMapping.swift */,
+				8E2BE83C2A6D2F6800AECC78 /* DatabaseTriggerDefinition.swift */,
 			);
 			path = VersionControl;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				8E7A8D3F2A67733200C086B9 /* PostgresSchemaInfo.swift in Sources */,
 				8E7A8D4E2A6773F100C086B9 /* PostgresDBRowValueConversion.swift in Sources */,
 				8E7A8CF92A6756A900C086B9 /* ViewController.swift in Sources */,
+				8E2BE83D2A6D2F6800AECC78 /* DatabaseTriggerDefinition.swift in Sources */,
 				8E7A8D302A675F2200C086B9 /* DatabaseColumnMapping.swift in Sources */,
 				8E7A8D5E2A677BAC00C086B9 /* FooDaoPostgresCK.swift in Sources */,
 				8E7A8D482A6773AA00C086B9 /* PostgreSQLStatement.swift in Sources */,
@@ -778,7 +782,7 @@
 			repositoryURL = "https://github.com/kelvinjjwong/LoggerFactory.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
+				minimumVersion = 1.0.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

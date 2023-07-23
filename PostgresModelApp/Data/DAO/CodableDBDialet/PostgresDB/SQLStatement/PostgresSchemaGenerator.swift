@@ -53,6 +53,65 @@ public final class PostgresSchemaSQLGenerator : SchemaSQLGenerator {
         }
     }
     
+    public func transform(_ definition:DatabaseTriggerDefinition) -> [String] {
+        switch definition.getAction() {
+        case .create:
+            return self.createTrigger(definition)
+        case .drop:
+            return self.dropTrigger(definition)
+        case .enable:
+            return self.enableTrigger(definition)
+        case .disable:
+            return self.disableTrigger(definition)
+        }
+    }
+    
+    public func createTrigger(_ definition:DatabaseTriggerDefinition) -> [String] {
+        var sqls:[String] = []
+        let sqlFunc = """
+CREATE OR REPLACE FUNCTION \(definition.getFunctionName() ?? "nil")()
+  RETURNS TRIGGER
+  LANGUAGE PLPGSQL
+  AS
+$$
+BEGIN
+    \(definition.getFunctionBody() ?? "")
+END;
+$$
+"""
+        let sqlTrigger = """
+CREATE OR REPLACE TRIGGER \(definition.getName())
+  \((definition.getWhen() ?? .none).string()) \((definition.getEvent() ?? .none).string())
+  ON \(definition.getTable())
+  \((definition.getLevel() ?? .none).string())
+  EXECUTE PROCEDURE \(definition.getFunctionName() ?? "nil")();
+"""
+        sqls.append(sqlFunc)
+        sqls.append(sqlTrigger)
+        return sqls
+    }
+    
+    public func dropTrigger(_ definition:DatabaseTriggerDefinition) -> [String] {
+        var sqls:[String] = []
+        let sql = "DROP TRIGGER \(definition.getName()) ON \(definition.getTable())"
+        sqls.append(sql)
+        return sqls
+    }
+    
+    public func enableTrigger(_ definition:DatabaseTriggerDefinition) -> [String] {
+        var sqls:[String] = []
+        let sql = "ALTER TABLE \(definition.getTable()) ENABLE TRIGGER \(definition.getName())"
+        sqls.append(sql)
+        return sqls
+    }
+    
+    public func disableTrigger(_ definition:DatabaseTriggerDefinition) -> [String] {
+        var sqls:[String] = []
+        let sql = "ALTER TABLE \(definition.getTable()) DISABLE TRIGGER \(definition.getName())"
+        sqls.append(sql)
+        return sqls
+    }
+    
     public func transform(_ definition:DatabaseTableDefinition) -> [String] {
         if definition.isCreate() {
             return self.createTable(definition, dropBeforeCreate: self.dropBeforeCreate)

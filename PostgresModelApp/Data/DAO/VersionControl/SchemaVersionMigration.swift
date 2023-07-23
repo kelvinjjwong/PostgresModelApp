@@ -16,6 +16,7 @@ public protocol DBExecutor {
 public protocol SchemaSQLGenerator {
     
     func transform(_ definition:DatabaseTableDefinition) -> [String]
+    func transform(_ definition:DatabaseTriggerDefinition) -> [String]
     func exists(version: String) -> String
     func initialise() -> String
     func cleanVersions() -> String
@@ -25,6 +26,7 @@ public protocol SchemaSQLGenerator {
 public protocol DatabaseChangeImplement {
     
     func apply(change:DatabaseTableDefinition) throws
+    func apply(change:DatabaseTriggerDefinition) throws
     func exists(version:String) -> Bool
     func add(version:String) throws
     func initialise() throws
@@ -66,7 +68,40 @@ public final class DatabaseChange {
         try self.impl.apply(change: drop)
     }
     
+    public func create(trigger name: String, when: DatabaseTriggerWhen, action: DatabaseTriggerEvent, on table: String, level: DatabaseTriggerLevel, function: String, body: String) throws {
+        let trigger = DatabaseTriggerDefinition(action: .create, name: name, table: table)
+        trigger.when(when)
+            .event(action)
+            .level(level)
+            .function(name: function, body: body)
+        try self.impl.apply(change: trigger)
+        
+    }
+    
+    public func rename(trigger name: String, on table: String, to newName: String) {
+        
+    }
+    
+    public func drop(trigger name:String, on table: String) {
+        
+    }
+    
+    public func enable(trigger name: String, on table:String) {
+        
+    }
+    
+    public func disable(trigger name:String, on table:String) {
+        
+    }
+    
+    
+    
     public func update(sql:String) throws {
+        let update = DatabaseTableDefinition(sql: sql)
+        try self.impl.apply(change: update)
+    }
+    
+    public func execute(sql:String) throws {
         let update = DatabaseTableDefinition(sql: sql)
         try self.impl.apply(change: update)
     }
@@ -83,6 +118,13 @@ public final class DefaultDatabaseChangeImplementer : DatabaseChangeImplement {
     }
     
     public func apply(change: DatabaseTableDefinition) throws {
+        let sqls = self.sqlGenerator.transform(change)
+        for sql in sqls {
+            try self.sqlExecutor.execute(sql: sql)
+        }
+    }
+    
+    public func apply(change: DatabaseTriggerDefinition) throws {
         let sqls = self.sqlGenerator.transform(change)
         for sql in sqls {
             try self.sqlExecutor.execute(sql: sql)

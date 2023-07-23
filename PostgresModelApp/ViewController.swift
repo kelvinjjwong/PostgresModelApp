@@ -38,7 +38,7 @@ class ViewController: NSViewController {
         let db = PostgresDB.connect(database: self.txtDatabase.stringValue, host: self.txtHostname.stringValue, user: self.txtUsername.stringValue)
         
         // VERSION MIGRATE
-        FooDao.default.versionCheck()
+        FooDao.default.versionCheck(cleanAll: true) // true for DEBUG, false for RELEASE
         
         // QUERY
         let records = FooDao.default.getFoos()
