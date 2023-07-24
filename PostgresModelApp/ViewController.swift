@@ -7,6 +7,7 @@
 
 import Cocoa
 import LoggerFactory
+import PostgresModelFactory
 
 class ViewController: NSViewController {
     

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PostgresModelFactory
 
 public final class Foo : Codable {
     
